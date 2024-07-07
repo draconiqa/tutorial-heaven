@@ -10,7 +10,10 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["apps/website/tsconfig.*?.json"]
+        "project": [
+          "apps/website/tsconfig.json",
+          "apps/website/tsconfig.*?.json"
+        ]
       },
       "rules": {
         "@next/next/no-html-link-for-pages": ["error", "apps/website/pages"]
