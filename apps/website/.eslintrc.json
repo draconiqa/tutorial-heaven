@@ -9,7 +9,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "excludedFiles": ["*.config.js"],
+      "excludedFiles": ["*.config.js", "*.config.ts"],
       "parserOptions": {
         "project": [
           "apps/website/tsconfig.json",
