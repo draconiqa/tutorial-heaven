@@ -3,6 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'th-nx-welcome',
+  standalone: true,
   imports: [CommonModule],
   template: `
     <!--
