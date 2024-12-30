@@ -84,6 +84,5 @@
         "linter": "eslint"
       }
     }
-  },
-  "useLegacyCache": true
+  }
 }
