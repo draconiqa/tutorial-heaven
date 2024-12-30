@@ -30,7 +30,7 @@
       "inputs": ["production", "^production"]
     },
     "e2e-ci--**/*": {
-      "dependsOn": ["^build", "^cms:build"]
+      "dependsOn": ["^build"]
     }
   },
   "plugins": [
