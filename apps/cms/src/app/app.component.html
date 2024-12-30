@@ -17,7 +17,7 @@
       nz-menu
       nzTheme="dark"
       nzMode="inline"
-      [nzInlineCollapsed]="isCollapsed"
+      [nzInlineCollapsed]="isCollapsed()"
     >
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
@@ -44,10 +44,10 @@
   <nz-layout>
     <nz-header>
       <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+        <span class="header-trigger" (click)="toggleCollapsed()">
           <nz-icon
             class="trigger"
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            [nzType]="isCollapsed() ? 'menu-unfold' : 'menu-fold'"
           />
         </span>
       </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -17,5 +17,9 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
   styleUrl: './app.component.less',
 })
 export class AppComponent {
-  isCollapsed = false;
+  readonly isCollapsed = signal(false);
+
+  toggleCollapsed() {
+    this.isCollapsed.update(isCollapsed => !isCollapsed);
+  }
 }
