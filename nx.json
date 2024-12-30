@@ -83,6 +83,12 @@
       "style": "less",
       "unitTestRunner": "jest"
     },
+    "@nx/angular:component": {
+      "prefix": "th",
+      "changeDetection": "OnPush",
+      "style": "less",
+      "skipTests": true
+    },
     "@nx/next": {
       "application": {
         "style": "tailwind",
