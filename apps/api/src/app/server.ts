@@ -2,9 +2,9 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import express from 'express';
-import type { Context } from './context';
 import { resolvers } from './resolvers';
 import { typeDefs } from './schema';
+import type { Context } from './types/context';
 
 export async function createServer(): Promise<express.Express> {
   const app = express();
