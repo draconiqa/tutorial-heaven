@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Build affected projects
+        run: npx nx affected -t build
+
+  format:
+    name: Formatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Run Prettier format check for affected files
+        run: npx nx format:check
+
+  lint:
+    name: Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Run ESLint for affected projects
+        run: npx nx affected -t lint
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Run Jest tests for affected projects
+        run: npx nx affected -t test
+
+  e2e:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Run E2E Cypress and Playwright tests
+        run: npx nx affected -t e2e

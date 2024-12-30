@@ -1,6 +1,9 @@
 {
   "name": "@tutorial-heaven/source",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=22.12"
+  },
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
