@@ -16,7 +16,7 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"]
+    "types": ["node"]
   },
   "include": [
     "**/*.ts",
@@ -30,7 +30,6 @@
   ],
   "exclude": [
     "node_modules",
-    "jest.config.ts",
     "vitest.config.ts",
     "**/*.spec.ts",
     "**/*.test.ts"
