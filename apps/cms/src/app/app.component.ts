@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @Component({
-  imports: [RouterModule],
-  selector: 'th-root',
+  selector: 'app-root',
+  imports: [
+    RouterLink,
+    RouterOutlet,
+    NzIconModule,
+    NzLayoutModule,
+    NzMenuModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less',
 })
-export class AppComponent {}
+export class AppComponent {
+  isCollapsed = false;
+}
