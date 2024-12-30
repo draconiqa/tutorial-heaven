@@ -8,14 +8,6 @@
         "project": ["apps/api/tsconfig.*?.json"]
       },
       "rules": {}
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
     }
   ]
 }

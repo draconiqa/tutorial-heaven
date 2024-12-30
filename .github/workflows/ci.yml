@@ -56,7 +56,7 @@ jobs:
           fetch-depth: 0
       - name: Set up dependencies
         uses: ./.github/actions/setup
-      - name: Run Jest tests for affected projects
+      - name: Run Vitest tests for affected projects
         run: npx nx affected -t test
 
   e2e:
