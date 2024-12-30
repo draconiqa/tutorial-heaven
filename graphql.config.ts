@@ -12,16 +12,27 @@ const add: AddPluginConfig = {
 };
 
 const codegen: CodegenConfig = {
+  config: {
+    strictScalars: true,
+    constEnums: true,
+    useTypeImports: true,
+  } satisfies TypeScriptPluginConfig,
   generates: {
     './apps/api/src/app/types/generated.ts': {
       plugins: [{ add }, 'typescript', 'typescript-resolvers'],
       config: {
         useIndexSignature: true,
         contextType: './context#Context',
-        strictScalars: true,
-        constEnums: true,
-        useTypeImports: true,
-      } satisfies TypeScriptPluginConfig & TypeScriptResolversPluginConfig,
+      } satisfies TypeScriptResolversPluginConfig,
+    },
+    './apps/cms/src/app/graphql/generated.ts': {
+      documents: ['./apps/cms/src/app/graphql/**/*.graphql'],
+      plugins: [
+        { add },
+        'typescript',
+        'typescript-operations',
+        'typescript-apollo-angular',
+      ],
     },
   },
   hooks: {
