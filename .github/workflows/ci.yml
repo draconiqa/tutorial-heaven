@@ -69,5 +69,7 @@ jobs:
           fetch-depth: 0
       - name: Set up dependencies
         uses: ./.github/actions/setup
+      - name: Install Playwright dependencies
+        run: npx playwright install --with-deps
       - name: Run E2E Cypress and Playwright tests
         run: npx nx affected -t e2e
