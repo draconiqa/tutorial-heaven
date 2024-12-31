@@ -6,7 +6,7 @@ import {
 } from '@apollo/client';
 import { HttpLink } from 'apollo-angular/http';
 
-const uri = 'http://localhost:3000/graphql'; // FIXME: dynamic environment variable
+const uri = 'http://localhost:3333/graphql'; // TODO: dynamic environment variable
 
 export function apolloOptionsFactory(): ApolloClientOptions<NormalizedCacheObject> {
   const httpLink = inject(HttpLink);
