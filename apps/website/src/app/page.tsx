@@ -1,4 +1,20 @@
-export default function Index() {
+import gql from 'graphql-tag';
+import { query } from '../lib/graphql/apollo-client';
+
+export default async function Index() {
+  // TODO: only for testing data fetching, remove later
+  const { data } = await query({
+    query: gql`
+      {
+        me {
+          email
+          displayName
+        }
+      }
+    `,
+  });
+  console.log(data);
+
   /*
    * Replace the elements below with your own.
    *

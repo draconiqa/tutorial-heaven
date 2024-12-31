@@ -21,6 +21,7 @@
     "@angular/cli": "~19.0.0",
     "@angular/compiler-cli": "19.0.5",
     "@angular/language-service": "19.0.5",
+    "@apollo/experimental-nextjs-app-support": "^0.11.7",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@commitlint/config-nx-scopes": "^19.5.0",
