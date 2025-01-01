@@ -5,16 +5,6 @@
     "module": "commonjs",
     "types": ["node"]
   },
-  "exclude": [
-    "vitest.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "src/**/*.spec.tsx",
-    "src/**/*.test.js",
-    "src/**/*.spec.js",
-    "src/**/*.test.jsx",
-    "src/**/*.spec.jsx"
-  ],
+  "exclude": ["vitest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
   "include": ["src/**/*.ts"]
 }

@@ -18,7 +18,6 @@
     "**/*.js",
     "cypress.config.ts",
     "**/*.cy.ts",
-    "**/*.cy.js",
     "**/*.d.ts"
   ]
 }
