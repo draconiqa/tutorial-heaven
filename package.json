@@ -8,7 +8,8 @@
   "scripts": {
     "commit": "git-cz",
     "prepare": "husky",
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen",
+    "codegen:watch": "graphql-codegen --watch"
   },
   "private": true,
   "devDependencies": {
@@ -45,6 +46,7 @@
     "@nx/vite": "20.3.0",
     "@nx/web": "20.3.0",
     "@nx/workspace": "20.3.0",
+    "@parcel/watcher": "^2.5.0",
     "@playwright/test": "^1.36.0",
     "@schematics/angular": "19.0.6",
     "@swc-node/register": "~1.9.1",
