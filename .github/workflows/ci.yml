@@ -73,3 +73,21 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run E2E Cypress and Playwright tests
         run: npx nx affected -t e2e
+
+  codegen:
+    name: Code generation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up dependencies
+        uses: ./.github/actions/setup
+      - name: Generate GraphQL types
+        run: npm run codegen
+      - name: Check generated files are unchanged
+        run: |
+          if [ "$(git diff --ignore-space-at-eol --text **/generated/** **/generated.ts | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after running codegen script. See status below:"
+            git diff --ignore-space-at-eol --text **/generated/** **/generated.ts
+            exit 1
+          fi

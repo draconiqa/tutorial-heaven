@@ -9,9 +9,11 @@ import {
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { provideApollo } from 'apollo-angular';
 import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
 import { APP_ROUTES } from './app.routes';
+import { apolloOptionsFactory } from './graphql/apollo-options';
 import { icons } from './icons-provider';
 
 registerLocaleData(en);
@@ -25,5 +27,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
     provideHttpClient(),
+    provideApollo(apolloOptionsFactory),
   ],
 };
