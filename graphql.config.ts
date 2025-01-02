@@ -14,7 +14,7 @@ const add: AddPluginConfig = {
 const codegen: CodegenConfig = {
   config: {
     strictScalars: true,
-    constEnums: true,
+    enumsAsTypes: true,
     useTypeImports: true,
   } satisfies TypeScriptPluginConfig,
   generates: {
@@ -33,6 +33,10 @@ const codegen: CodegenConfig = {
         'typescript-operations',
         'typescript-apollo-angular',
       ],
+    },
+    './apps/website/src/lib/graphql/generated/': {
+      documents: ['./apps/website/src/**/*.{ts,tsx}'],
+      preset: 'client',
     },
   },
   hooks: {
