@@ -1,17 +1,10 @@
-import gql from 'graphql-tag';
 import { query } from '../lib/graphql/apollo-client';
+import { PROFILE_QUERY } from '../lib/graphql/operations';
 
 export default async function Index() {
   // TODO: only for testing data fetching, remove later
   const { data } = await query({
-    query: gql`
-      {
-        me {
-          email
-          displayName
-        }
-      }
-    `,
+    query: PROFILE_QUERY,
   });
   console.log(data);
 
