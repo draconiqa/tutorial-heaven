@@ -42,6 +42,7 @@ const codegen: CodegenConfig = {
   hooks: {
     afterAllFileWrite: ['prettier --write'],
   },
+  ignoreNoDocuments: true,
 };
 
 const config: IGraphQLConfig = {
