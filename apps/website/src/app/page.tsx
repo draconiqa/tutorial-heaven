@@ -1,6 +1,8 @@
 import { query } from '../lib/graphql/apollo-client';
 import { PROFILE_QUERY } from '../lib/graphql/operations';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Index() {
   // TODO: only for testing data fetching, remove later
   const { data } = await query({
