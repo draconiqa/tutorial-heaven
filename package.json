@@ -1,6 +1,7 @@
 {
   "name": "@tutorial-heaven/source",
   "version": "0.0.0",
+  "type": "module",
   "engines": {
     "node": ">=22.12"
   },
