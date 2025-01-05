@@ -18,6 +18,7 @@ const codegen: CodegenConfig = {
     useTypeImports: true,
   } satisfies TypeScriptPluginConfig,
   generates: {
+    // API - Apollo Server, Express
     './apps/api/src/app/types/generated.ts': {
       plugins: [{ add }, 'typescript', 'typescript-resolvers'],
       config: {
@@ -25,6 +26,7 @@ const codegen: CodegenConfig = {
         contextType: './context#Context',
       } satisfies TypeScriptResolversPluginConfig,
     },
+    // CMS - Apollo Client, Angular SPA
     './apps/cms/src/app/graphql/generated.ts': {
       documents: ['./apps/cms/src/app/graphql/**/*.graphql'],
       plugins: [
@@ -34,6 +36,7 @@ const codegen: CodegenConfig = {
         'typescript-apollo-angular',
       ],
     },
+    // Website - Apollo Client, Next.js SSR
     './apps/website/src/lib/graphql/generated/': {
       documents: ['./apps/website/src/**/*.{ts,tsx}'],
       preset: 'client',

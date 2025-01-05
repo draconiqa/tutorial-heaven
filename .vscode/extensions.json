@@ -2,6 +2,7 @@
   "recommendations": [
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
+    "graphql.vscode-graphql",
     "ms-playwright.playwright"
   ]
 }
