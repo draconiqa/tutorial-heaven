@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
+    "module": "Preserve",
     "types": ["node"]
   },
   "exclude": ["vitest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
