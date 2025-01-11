@@ -71,6 +71,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Install Playwright dependencies
         run: npx playwright install --with-deps
+      - name: Initialize database
+        run: |
+          npm run db:docker
+          npm run db:migrate
       - name: Run E2E Cypress and Playwright tests
         run: npx nx affected -t e2e
 
@@ -82,8 +86,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up dependencies
         uses: ./.github/actions/setup
+      - name: Initialize database
+        run: |
+          npm run db:docker
+          npm run db:migrate
+      - name: Generate PostgreSQL types
+        run: npm run codegen:db
       - name: Generate GraphQL types
-        run: npm run codegen
+        run: npm run codegen:gql
       - name: Check generated files are unchanged
         run: |
           if [ "$(git diff --ignore-space-at-eol --text **/generated/** **/generated.ts | wc -l)" -gt "0" ]; then
