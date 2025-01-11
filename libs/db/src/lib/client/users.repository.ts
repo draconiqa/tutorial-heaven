@@ -8,7 +8,7 @@ export class UsersRepository {
     return this.db
       .selectFrom('users')
       .orderBy('email', 'asc')
-      .select(['id', 'email', 'display_name'])
+      .selectAll()
       .execute();
   }
 
@@ -16,7 +16,7 @@ export class UsersRepository {
     return this.db
       .selectFrom('users')
       .where('email', '=', email)
-      .select(['id', 'email', 'display_name'])
+      .selectAll()
       .executeTakeFirst();
   }
 }
