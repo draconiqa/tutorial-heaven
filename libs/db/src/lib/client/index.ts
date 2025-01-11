@@ -1,5 +1,5 @@
 import { Kysely, PostgresDialect } from 'kysely';
-import { Pool } from 'pg';
+import pg from 'pg';
 import type { Database } from '../models';
 import { UsersRepository } from './users.repository';
 
@@ -8,7 +8,7 @@ export function createDBClient(
 ) {
   const db = new Kysely<Database>({
     dialect: new PostgresDialect({
-      pool: new Pool({
+      pool: new pg.Pool({
         connectionString,
       }),
     }),

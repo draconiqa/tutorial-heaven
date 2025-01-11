@@ -1,3 +1,5 @@
+import { DBClient } from '@th/db';
+
 export type Context = {
-  // TODO: add DB client, token, etc.
+  db: DBClient;
 };
