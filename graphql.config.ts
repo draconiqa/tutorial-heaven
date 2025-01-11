@@ -24,6 +24,9 @@ const codegen: CodegenConfig = {
       config: {
         useIndexSignature: true,
         contextType: './context#Context',
+        mappers: {
+          User: '@th/db#UserModel',
+        },
       } satisfies TypeScriptResolversPluginConfig,
     },
     // CMS - Apollo Client, Angular SPA

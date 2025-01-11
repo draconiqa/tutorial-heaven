@@ -7,10 +7,6 @@ export const queryResolvers: QueryResolvers = {
     if (!user) {
       throw new Error('User not found');
     }
-    return {
-      id: user.id.toString(),
-      email: user.email,
-      displayName: user.display_name ?? '',
-    };
+    return user;
   },
 };
