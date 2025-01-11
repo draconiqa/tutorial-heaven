@@ -6,7 +6,7 @@ import type { ColumnType, Insertable, Selectable, Updateable } from 'kysely';
 export type UserId = number & { __brand: 'UserId' };
 
 /** Represents the table public.users */
-export default interface UserTable {
+export default interface UserModelTable {
   id: ColumnType<UserId, UserId | undefined, UserId>;
 
   email: ColumnType<string, string, string>;
@@ -18,8 +18,8 @@ export default interface UserTable {
   created_at: ColumnType<Date, Date | string | undefined, Date | string>;
 }
 
-export type User = Selectable<UserTable>;
+export type UserModel = Selectable<UserModelTable>;
 
-export type NewUser = Insertable<UserTable>;
+export type NewUserModel = Insertable<UserModelTable>;
 
-export type UserUpdate = Updateable<UserTable>;
+export type UserModelUpdate = Updateable<UserModelTable>;

@@ -16,10 +16,12 @@ module.exports = {
   typeFilter: kyselyTypeFilter,
   preRenderHooks: [makeKyselyHook()],
   enumStyle: 'type',
-  getMetadata: (details, generateFor, instantiatedConfig) =>
-    nameToSingular(details, customDetails =>
+  getMetadata: (details, generateFor, instantiatedConfig) => {
+    const metadata = nameToSingular(details, customDetails =>
       defaultGetMetadata(customDetails, generateFor, instantiatedConfig),
-    ),
+    );
+    return { ...metadata, name: `${metadata.name}Model` };
+  },
   generateIdentifierType: (column, details, instantiatedConfig) =>
     nameToSingular(details, customDetails =>
       defaultGenerateIdentifierType(column, customDetails, instantiatedConfig),
