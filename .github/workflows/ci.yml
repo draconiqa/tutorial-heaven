@@ -75,6 +75,8 @@ jobs:
         run: |
           npm run db:docker
           npm run db:migrate
+      - name: Seed database
+        run: npm run db:seed
       - name: Run E2E Cypress and Playwright tests
         run: npx nx affected -t e2e
 
