@@ -94,6 +94,12 @@
         "style": "tailwind",
         "linter": "eslint"
       }
+    },
+    "@nx/js:library": {
+      "bundler": "none",
+      "linter": "eslint",
+      "unitTestRunner": "vitest",
+      "setParserOptionsProject": true
     }
   }
 }
