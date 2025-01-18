@@ -13,7 +13,7 @@
         "platform": "node",
         "outputPath": "dist/apps/api",
         "format": ["esm"],
-        "bundle": false,
+        "bundle": true,
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
         "assets": ["apps/api/src/assets"],
@@ -39,6 +39,7 @@
       }
     },
     "serve": {
+      "dependsOn": ["^setup"],
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
@@ -56,6 +57,12 @@
     "docker-build": {
       "dependsOn": ["build"],
       "command": "docker build -f apps/api/Dockerfile . -t api"
+    },
+    "codegen": {
+      "command": "graphql-codegen --config=apps/api/graphql.config.ts",
+      "cache": true,
+      "inputs": ["{workspaceRoot}/apps/api/src/app/schema.ts"],
+      "outputs": ["{projectRoot}/src/app/types/generated.ts"]
     }
   }
 }
