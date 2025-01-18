@@ -1,5 +1,5 @@
 import type { Kysely } from 'kysely';
-import { hash } from './utils/hash';
+import { hash } from '../src/lib/utils/hash';
 
 export async function seed(db: Kysely<any>): Promise<void> {
   const user = {

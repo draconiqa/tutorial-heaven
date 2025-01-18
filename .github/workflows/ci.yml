@@ -72,11 +72,7 @@ jobs:
       - name: Install Playwright dependencies
         run: npx playwright install --with-deps
       - name: Initialize database
-        run: |
-          npm run db:docker
-          npm run db:migrate
-      - name: Seed database
-        run: npm run db:seed
+        run: npx nx run db:setup:ci
       - name: Run E2E Cypress and Playwright tests
         run: npx nx affected -t e2e
 
@@ -88,18 +84,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up dependencies
         uses: ./.github/actions/setup
-      - name: Initialize database
-        run: |
-          npm run db:docker
-          npm run db:migrate
       - name: Generate PostgreSQL types
-        run: npm run codegen:db
+        run: npx nx run db:codegen
       - name: Generate GraphQL types
         run: npm run codegen:gql
       - name: Check generated files are unchanged
         run: |
-          if [ "$(git diff --ignore-space-at-eol --text **/generated/** **/generated.ts | wc -l)" -gt "0" ]; then
+          if [ "$(git diff --ignore-space-at-eol --text | wc -l)" -gt "0" ]; then
             echo "Detected uncommitted changes after running codegen script. See status below:"
-            git diff --ignore-space-at-eol --text **/generated/** **/generated.ts
+            git diff --ignore-space-at-eol --text
             exit 1
           fi

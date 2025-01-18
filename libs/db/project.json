@@ -5,5 +5,71 @@
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project db --web",
-  "targets": {}
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose up -d --wait --remove-orphans postgres",
+        "cwd": "libs/db"
+      }
+    },
+    "logs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose logs -f",
+        "cwd": "libs/db"
+      }
+    },
+    "drop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose down --remove-orphans",
+        "cwd": "libs/db"
+      }
+    },
+    "migrate-up": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["start"],
+      "options": {
+        "command": "kysely migrate up",
+        "cwd": "libs/db"
+      }
+    },
+    "seed": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["migrate-up"],
+      "options": {
+        "command": "kysely seed run",
+        "cwd": "libs/db"
+      }
+    },
+    "setup": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["seed"],
+      "options": {
+        "commands": [
+          "docker compose up -d --wait adminer",
+          "echo 'PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db'",
+          "echo 'Adminer running at http://localhost:8080/?pgsql=postgres&username=admin&db=th_db&ns=public'"
+        ],
+        "parallel": false,
+        "cwd": "libs/db"
+      },
+      "configurations": {
+        "ci": {
+          "commands": [
+            "echo 'PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db'"
+          ]
+        }
+      }
+    },
+    "codegen": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["migrate-up"],
+      "options": {
+        "command": "kanel",
+        "cwd": "libs/db"
+      }
+    }
+  }
 }
