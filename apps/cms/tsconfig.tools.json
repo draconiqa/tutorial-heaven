@@ -4,10 +4,5 @@
     "outDir": "../../dist/out-tsc",
     "types": ["node"]
   },
-  "include": [
-    "kysely.config.ts",
-    ".kanelrc.cjs",
-    "migrations/**/*.ts",
-    "seeds/**/*.ts"
-  ]
+  "include": ["graphql.config.ts"]
 }

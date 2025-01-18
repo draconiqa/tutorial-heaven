@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nx run-many -t serve --parallel --output-style=stream",
     "commit": "git-cz",
-    "codegen": "nx codegen",
+    "codegen": "nx run-many -t codegen",
     "prepare": "husky"
   },
   "private": true,

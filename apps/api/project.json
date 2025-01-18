@@ -57,6 +57,9 @@
     "docker-build": {
       "dependsOn": ["build"],
       "command": "docker build -f apps/api/Dockerfile . -t api"
+    },
+    "codegen": {
+      "command": "graphql-codegen --config=apps/api/graphql.config.ts"
     }
   }
 }
