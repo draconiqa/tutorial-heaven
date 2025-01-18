@@ -7,7 +7,13 @@
   "// targets": "to see all targets run: nx show project website --web",
   "targets": {
     "codegen": {
-      "command": "graphql-codegen --config=apps/website/graphql.config.ts"
+      "command": "graphql-codegen --config=apps/website/graphql.config.ts",
+      "cache": true,
+      "inputs": [
+        "{workspaceRoot}/apps/api/src/app/schema.ts",
+        "{projectRoot}/src/**/*.{ts,tsx}"
+      ],
+      "outputs": ["{projectRoot}/src/lib/graphql/generated/"]
     }
   }
 }

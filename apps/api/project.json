@@ -59,7 +59,10 @@
       "command": "docker build -f apps/api/Dockerfile . -t api"
     },
     "codegen": {
-      "command": "graphql-codegen --config=apps/api/graphql.config.ts"
+      "command": "graphql-codegen --config=apps/api/graphql.config.ts",
+      "cache": true,
+      "inputs": ["{workspaceRoot}/apps/api/src/app/schema.ts"],
+      "outputs": ["{projectRoot}/src/app/types/generated.ts"]
     }
   }
 }
