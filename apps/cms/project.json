@@ -86,7 +86,13 @@
       }
     },
     "codegen": {
-      "command": "graphql-codegen --config=apps/cms/graphql.config.ts"
+      "command": "graphql-codegen --config=apps/cms/graphql.config.ts",
+      "cache": true,
+      "inputs": [
+        "{workspaceRoot}/apps/api/src/app/schema.ts",
+        "{projectRoot}/src/app/graphql/**/*.graphql"
+      ],
+      "outputs": ["{projectRoot}/src/app/graphql/generated.ts"]
     }
   }
 }
