@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc"
+  },
+  "include": [
+    "kysely.config.ts",
+    ".kanelrc.cjs",
+    "migrations/**/*.ts",
+    "seeds/**/*.ts"
+  ]
+}
