@@ -1,0 +1,9 @@
+{
+  "name": "root",
+  "targets": {
+    "codegen": {
+      "dependsOn": [{ "target": "codegen", "projects": ["db"] }],
+      "command": "graphql-codegen"
+    }
+  }
+}
