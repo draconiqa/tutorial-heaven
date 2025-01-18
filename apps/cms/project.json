@@ -84,6 +84,9 @@
         "staticFilePath": "dist/apps/cms/browser",
         "spa": true
       }
+    },
+    "codegen": {
+      "command": "graphql-codegen --config=apps/cms/graphql.config.ts"
     }
   }
 }

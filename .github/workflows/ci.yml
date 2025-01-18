@@ -84,14 +84,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up dependencies
         uses: ./.github/actions/setup
-      - name: Generate PostgreSQL types
-        run: npx nx run db:codegen
-      - name: Generate GraphQL types
-        run: npm run codegen:gql
+      - name: Generate GraphQL and PostgreSQL types
+        run: npx nx run-many -t codegen
       - name: Check generated files are unchanged
         run: |
           if [ "$(git diff --ignore-space-at-eol --text | wc -l)" -gt "0" ]; then
-            echo "Detected uncommitted changes after running codegen script. See status below:"
+            echo "Detected uncommitted changes after running codegen tasks. See status below:"
             git diff --ignore-space-at-eol --text
             exit 1
           fi
