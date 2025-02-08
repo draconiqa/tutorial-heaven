@@ -31,6 +31,7 @@
   "exclude": [
     "node_modules",
     "vitest.config.ts",
+    "graphql.config.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.tsx",

@@ -3,6 +3,7 @@
 const { defaultGetMetadata, defaultGenerateIdentifierType } = require('kanel');
 const { kyselyTypeFilter, makeKyselyHook } = require('kanel-kysely');
 const prettier = require('prettier');
+const path = require('node:path');
 
 /** @type {import('kanel').Config} */
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
     database: 'th_db',
   },
   preDeleteOutputFolder: true,
-  outputPath: './libs/db/src/lib/models/generated',
+  outputPath: path.join(__dirname, 'src/lib/models/generated'),
   typeFilter: kyselyTypeFilter,
   preRenderHooks: [makeKyselyHook()],
   postRenderHooks: [prettierHook()],

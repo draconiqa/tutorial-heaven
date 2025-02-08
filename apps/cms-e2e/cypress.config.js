@@ -8,8 +8,8 @@ export default defineConfig({
     ...nxE2EPreset(fileURLToPath(import.meta.url), {
       cypressDir: 'src',
       webServerCommands: {
-        default: 'nx run cms:serve:development',
-        production: 'nx run cms:serve:production',
+        default: 'nx run-many -t serve,setup -p cms,api,db -c ci',
+        production: 'nx run-many -t serve,setup -p cms,api,db -c ci',
       },
       ciWebServerCommand: 'nx run cms:serve-static',
     }),
