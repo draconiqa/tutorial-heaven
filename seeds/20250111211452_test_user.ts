@@ -13,12 +13,11 @@ export async function seed(db: Kysely<any>): Promise<void> {
     return;
   }
 
-  const [existingUser] = await db
+  const existingUser = await db
     .selectFrom('users')
     .where('email', '=', user.email)
-    .limit(1)
     .select('id')
-    .execute();
+    .executeTakeFirst();
   if (existingUser) {
     console.warn(
       `Test user ${user.email} already exists (ID: ${existingUser.id})`,
