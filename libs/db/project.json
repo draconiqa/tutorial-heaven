@@ -15,10 +15,7 @@
     },
     "logs": {
       "executor": "nx:run-commands",
-      "options": {
-        "command": "docker compose logs -f",
-        "cwd": "libs/db"
-      }
+      "options": { "command": "docker compose logs -f", "cwd": "libs/db" }
     },
     "drop": {
       "executor": "nx:run-commands",
@@ -30,18 +27,12 @@
     "migrate-up": {
       "executor": "nx:run-commands",
       "dependsOn": ["start"],
-      "options": {
-        "command": "kysely migrate up",
-        "cwd": "libs/db"
-      }
+      "options": { "command": "kysely migrate up", "cwd": "libs/db" }
     },
     "seed": {
       "executor": "nx:run-commands",
       "dependsOn": ["migrate-up"],
-      "options": {
-        "command": "kysely seed run",
-        "cwd": "libs/db"
-      }
+      "options": { "command": "kysely seed run", "cwd": "libs/db" }
     },
     "setup": {
       "executor": "nx:run-commands",
@@ -49,8 +40,8 @@
       "options": {
         "commands": [
           "docker compose up -d --wait adminer",
-          "echo 'PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db'",
-          "echo 'Adminer running at http://localhost:8080/?pgsql=postgres&username=admin&db=th_db&ns=public'"
+          "echo \"PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db\"",
+          "echo \"Adminer running at http://localhost:8080/?pgsql=postgres&username=admin&db=th_db&ns=public\""
         ],
         "parallel": false,
         "cwd": "libs/db"
@@ -58,7 +49,7 @@
       "configurations": {
         "ci": {
           "commands": [
-            "echo 'PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db'"
+            "echo \"PostreSQL connection string is postgres://admin:admin@localhost:5432/th_db\""
           ]
         }
       }
@@ -66,10 +57,7 @@
     "codegen": {
       "executor": "nx:run-commands",
       "dependsOn": ["migrate-up"],
-      "options": {
-        "command": "kanel",
-        "cwd": "libs/db"
-      }
+      "options": { "command": "kanel", "cwd": "libs/db" }
     }
   }
 }
