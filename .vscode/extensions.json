@@ -2,7 +2,13 @@
   "recommendations": [
     "nrwl.angular-console",
     "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
     "graphql.vscode-graphql",
-    "ms-playwright.playwright"
+    "angular.ng-template",
+    "bradlc.vscode-tailwindcss",
+    "vitest.explorer",
+    "ms-playwright.playwright",
+    "ckolkman.vscode-postgres",
+    "github.vscode-github-actions"
   ]
 }
