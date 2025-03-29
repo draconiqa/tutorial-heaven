@@ -5,6 +5,8 @@ const { kyselyTypeFilter, makeKyselyHook } = require('kanel-kysely');
 const prettier = require('prettier');
 const path = require('node:path');
 
+const outputPath = path.join(__dirname, 'src/lib/models/generated');
+
 /** @type {import('kanel').Config} */
 module.exports = {
   connection: {
@@ -14,9 +16,9 @@ module.exports = {
     database: 'th_db',
   },
   preDeleteOutputFolder: true,
-  outputPath: path.join(__dirname, 'src/lib/models/generated'),
+  outputPath,
   typeFilter: kyselyTypeFilter,
-  preRenderHooks: [makeKyselyHook()],
+  preRenderHooks: [makeKyselyHook(), fixDatabaseExportHook()],
   postRenderHooks: [prettierHook()],
   enumStyle: 'type',
   getMetadata: (details, generateFor, instantiatedConfig) => {
@@ -30,6 +32,25 @@ module.exports = {
       defaultGenerateIdentifierType(column, customDetails, instantiatedConfig),
     ),
 };
+
+/**
+ * Creates pre-render hook that fixes default export of Database type.
+ * @returns {import('kanel').PreRenderHook}
+ */
+function fixDatabaseExportHook() {
+  return output => {
+    // converts `type Database = PublicSchema; export default Database;`
+    // to `export type Database = PublicSchema;`
+    // reason - default export of a type is not valid with `verbatimModuleSyntax`
+    const declaration = output[path.join(outputPath, 'Database')]?.declarations
+      .filter(d => d.declarationType === 'typeDeclaration')
+      .find(d => d.name === 'Database' && d.exportAs === 'default');
+    if (declaration) {
+      declaration.exportAs = 'named';
+    }
+    return output;
+  };
+}
 
 /**
  * Creates post-render hook that formats output source code using Prettier.
