@@ -1,2 +1,2 @@
 export * from './lib/client';
-export * from './lib/models';
+export type * from './lib/models';
