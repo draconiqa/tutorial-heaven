@@ -1,4 +1,4 @@
-import { DBClient } from '@th/db';
+import type { DBClient } from '@th/db';
 
 export type Context = {
   db: DBClient;

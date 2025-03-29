@@ -2,7 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import {
-  ApplicationConfig,
+  type ApplicationConfig,
   importProvidersFrom,
   provideZoneChangeDetection,
 } from '@angular/core';
